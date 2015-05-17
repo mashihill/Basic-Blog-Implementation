@@ -148,7 +148,6 @@ class LogIn(BaseHandler):
 class LogOut(BaseHandler):
     def get(self):
         self.response.headers.add_header('Set-Cookie', 'username=; Path=/')
-        #self.response.headers.add_header('Set-Cookie', 'Path=/')
         self.redirect('/signup')
 
 class Welcome(BaseHandler):
@@ -217,12 +216,12 @@ class home(BaseHandler):
 
 
 app = webapp2.WSGIApplication([('/blog', home),
-                               ('/blog.json', home),
+                               ('/blog/.json', home),
                                ('/', Welcome),
-                               ('/signup', SignUp),
-                               ('/login', LogIn),
-                               ('/logout', LogOut),
-                               ('/rot13', Rot13),
+                               ('/blog/signup', SignUp),
+                               ('/blog/login', LogIn),
+                               ('/blog/logout', LogOut),
+                               ('/blog/rot13', Rot13),
                                ('/blog/newpost', newpost),
                                ('/blog/(\d+).json', blog),
                                ('/blog/(\d+)', blog)],
